@@ -35,7 +35,7 @@ void MysqlConnect(MYSQL* mysql,const char* host = "localhost",const char* user =
     if(!mysql_real_connect(mysql,host,user,password,database,port,unix_socket,clientflag)){
         perror("connect failed!\n");
 
-        exit(1);
+        return;
     }
     
     isConnected = true;
@@ -61,7 +61,7 @@ class sqlbase{
             if(!result){
                 perror("count failed\n");
 
-                exit(1);
+                return;
             }
 
             row = mysql_fetch_row(result);
@@ -106,7 +106,7 @@ class sqltrue:public sqlbase{
                 default:
                     perror("use w or i or d\n");
                     
-                    exit(1);
+                    return;
             }
         }
     private:
@@ -129,7 +129,7 @@ class sqltrue:public sqlbase{
             if(ct==0){
                 perror("the table is empty\n");
 
-                exit(0);
+                return;
             }
 
             string table;
@@ -167,7 +167,7 @@ class sqltrue:public sqlbase{
                 if(!result){
                     printf("result fault!\n");
 
-                    exit(1);
+                    return;
                 }
 
                 row = mysql_fetch_row(result);

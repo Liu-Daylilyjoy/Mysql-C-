@@ -12,7 +12,7 @@ int main(int argc,char** argv){
         exit(1);
     }
 
-    sql->request(argv[1][0]);
+    sql->request(argv[1][0]);	
 
-    exit(0);
+    return 0;
 }
